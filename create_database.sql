@@ -1,17 +1,3 @@
--- Database generated with pgModeler (PostgreSQL Database Modeler).
--- pgModeler version: 1.0.0-alpha1
--- PostgreSQL version: 15.0
--- Project Site: pgmodeler.io
--- Model Author: ---
-
--- Database creation must be performed outside a multi lined SQL file. 
--- These commands were put in this file only as a convenience.
--- 
--- object: new_database | type: DATABASE --
--- DROP DATABASE IF EXISTS new_database;
-CREATE DATABASE new_database;
--- ddl-end --
-
 
 -- object: public.person | type: TABLE --
 CREATE TABLE public.person (
@@ -36,7 +22,6 @@ CREATE TABLE public.address (
 	street_name varchar(128) NOT NULL,
 	zip_code varchar(12) NOT NULL,
 	street_number varchar(32),
-	lesson_id_lesson integer NOT NULL,
 	CONSTRAINT address_pk PRIMARY KEY (address_id),
 	CONSTRAINT address_id UNIQUE (address_id)
 );
@@ -50,7 +35,6 @@ CREATE TABLE public.instrument (
 	type varchar(128) NOT NULL,
 	brand varchar(128) NOT NULL,
 	price integer NOT NULL,
-	available boolean NOT NULL,
 	CONSTRAINT instrument_pk PRIMARY KEY (instrument_id),
 	CONSTRAINT instrument_id UNIQUE (instrument_id)
 );
@@ -88,10 +72,6 @@ CREATE TABLE public.lesson (
 	instructor_id serial NOT NULL,
 	"time" timestamp NOT NULL,
 	skill_level smallint NOT NULL,
-	lesson_type integer NOT NULL,
-	lesson_address serial NOT NULL,
-	instructor_id_instructor integer NOT NULL,
-	classroom varchar(64) NOT NULL,
 	CONSTRAINT lesson_pk PRIMARY KEY (lesson_id)
 );
 -- ddl-end --
@@ -101,11 +81,7 @@ ALTER TABLE public.lesson OWNER TO postgres;
 -- object: public.student_lesson | type: TABLE --
 CREATE TABLE public.student_lesson (
 	student_id serial NOT NULL,
-	lesson_id serial NOT NULL,
-	instrument_type varchar(128),
-	student_id_student integer NOT NULL,
-	lesson_id_lesson integer NOT NULL
-
+	lesson_id serial NOT NULL
 );
 -- ddl-end --
 ALTER TABLE public.student_lesson OWNER TO postgres;
@@ -118,7 +94,6 @@ CREATE TABLE public.rental (
 	instrument_id serial NOT NULL,
 	rental_start timestamp NOT NULL,
 	rental_end timestamp NOT NULL,
-	student_id_student integer NOT NULL,
 	CONSTRAINT rental_pk PRIMARY KEY (rental_id),
 	CONSTRAINT rental_id UNIQUE (rental_id)
 );
@@ -130,7 +105,6 @@ ALTER TABLE public.rental OWNER TO postgres;
 CREATE TABLE public.sibling (
 	student_id serial NOT NULL,
 	personal_id_number char(12) NOT NULL
-
 );
 -- ddl-end --
 ALTER TABLE public.sibling OWNER TO postgres;
@@ -139,7 +113,7 @@ ALTER TABLE public.sibling OWNER TO postgres;
 -- object: public.ensemble | type: TABLE --
 CREATE TABLE public.ensemble (
 	price integer NOT NULL,
-	schedule timestamp,
+	schedule varchar(500) NOT NULL,
 	available_spots integer NOT NULL,
 	genre varchar(128) NOT NULL
 -- 	lesson_id integer NOT NULL,
@@ -160,7 +134,7 @@ ALTER TABLE public.ensemble OWNER TO postgres;
 -- object: public.group_lesson | type: TABLE --
 CREATE TABLE public.group_lesson (
 	price integer NOT NULL,
-	schedule timestamp NOT NULL,
+	schedule varchar(500) NOT NULL,
 	available_spots integer NOT NULL
 -- 	lesson_id integer NOT NULL,
 -- 	instructor_id integer NOT NULL,
@@ -195,40 +169,30 @@ CREATE TABLE public.individual_lesson (
 ALTER TABLE public.individual_lesson OWNER TO postgres;
 -- ddl-end --
 
--- object: lesson_fk | type: CONSTRAINT --
-ALTER TABLE public.address ADD CONSTRAINT lesson_fk FOREIGN KEY (lesson_id_lesson)
-REFERENCES public.lesson (lesson_id) MATCH FULL
-ON DELETE RESTRICT ON UPDATE CASCADE;
--- ddl-end --
-
--- object: address_uq | type: CONSTRAINT --
-ALTER TABLE public.address ADD CONSTRAINT address_uq UNIQUE (lesson_id_lesson);
--- ddl-end --
-
 -- object: instructor_fk | type: CONSTRAINT --
-ALTER TABLE public.lesson ADD CONSTRAINT instructor_fk FOREIGN KEY (instructor_id_instructor)
+ALTER TABLE public.lesson ADD CONSTRAINT instructor_fk FOREIGN KEY (instructor_id)
 REFERENCES public.instructor (instructor_id) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: lesson_uq | type: CONSTRAINT --
-ALTER TABLE public.lesson ADD CONSTRAINT lesson_uq UNIQUE (instructor_id_instructor);
+ALTER TABLE public.lesson ADD CONSTRAINT lesson_uq UNIQUE (instructor_id);
 -- ddl-end --
 
 -- object: student_fk | type: CONSTRAINT --
-ALTER TABLE public.rental ADD CONSTRAINT student_fk FOREIGN KEY (student_id_student)
+ALTER TABLE public.rental ADD CONSTRAINT student_fk FOREIGN KEY (student_id)
 REFERENCES public.student (student_id) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: student_fk | type: CONSTRAINT --
-ALTER TABLE public.student_lesson ADD CONSTRAINT student_fk FOREIGN KEY (student_id_student)
+ALTER TABLE public.student_lesson ADD CONSTRAINT student_fk FOREIGN KEY (student_id)
 REFERENCES public.student (student_id) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: lesson_fk | type: CONSTRAINT --
-ALTER TABLE public.student_lesson ADD CONSTRAINT lesson_fk FOREIGN KEY (lesson_id_lesson)
+ALTER TABLE public.student_lesson ADD CONSTRAINT lesson_fk FOREIGN KEY (lesson_id)
 REFERENCES public.lesson (lesson_id) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
@@ -251,11 +215,8 @@ REFERENCES public.person (personal_id_number) MATCH SIMPLE
 ON DELETE NO ACTION ON UPDATE NO ACTION;
 -- ddl-end --
 
--- object: instrument | type: CONSTRAINT --
-ALTER TABLE public.student_lesson ADD CONSTRAINT instrument FOREIGN KEY (instrument_type)
-REFERENCES public.instrument (type) MATCH SIMPLE
-ON DELETE CASCADE ON UPDATE NO ACTION;
--- ddl-end --
+ALTER TABLE instrument ADD CONSTRAINT instrument_type UNIQUE (type);
+
 
 -- object: instrument_id | type: CONSTRAINT --
 ALTER TABLE public.rental ADD CONSTRAINT instrument_id FOREIGN KEY (instrument_id)
