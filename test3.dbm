@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+ Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="1.0.0-alpha1" use-changelog="false" last-position="0,0" last-zoom="0.75" max-obj-count="15"
+	 default-schema="public" default-owner="postgres"
+	 layers="Default layer"
+	 active-layers="0"
+	 layer-name-colors="#000000"
+	 layer-rect-colors="#b4b4b4"
+	 show-layer-names="false" show-layer-rects="false">
+<role name="scalor"
+ inherit="true"
+ login="true"
+ encrypted="true"
+ password="********">
+</role>
+
+<database name="seminar3" encoding="UTF8" lc-collate="en_US.UTF-8" lc-ctype="en_US.UTF-8" is-template="false" allow-conns="true">
+	<role name="postgres"/>
+	<tablespace name="pg_default"/>
+</database>
+
+<schema name="public" layers="0" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<sequence name="person_address_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="person" layers="0" collapse-mode="2" max-obj-count="7" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="60" y="60"/>
+	<column name="personal_id_number" not-null="true">
+		<type name="character" length="12"/>
+	</column>
+	<column name="email" not-null="true">
+		<type name="character varying" length="64"/>
+	</column>
+	<column name="first_name" not-null="true">
+		<type name="character varying" length="128"/>
+	</column>
+	<column name="surname" not-null="true">
+		<type name="character varying" length="128"/>
+	</column>
+	<column name="address_id" not-null="true" sequence="public.person_address_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="phone_number">
+		<type name="character varying" length="32"/>
+	</column>
+	<constraint name="person_pk" type="pk-constr" table="public.person">
+		<columns names="personal_id_number" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="email" type="uq-constr" table="public.person">
+		<columns names="email" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="address_address_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="address" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="880" y="60"/>
+	<column name="address_id" not-null="true" sequence="public.address_address_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="city" not-null="true">
+		<type name="character varying" length="128"/>
+	</column>
+	<column name="street_name" not-null="true">
+		<type name="character varying" length="128"/>
+	</column>
+	<column name="zip_code" not-null="true">
+		<type name="character varying" length="12"/>
+	</column>
+	<column name="street_number">
+		<type name="character varying" length="32"/>
+	</column>
+	<constraint name="address_pk" type="pk-constr" table="public.address">
+		<columns names="address_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="instrument_instrument_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="instrument" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1600" y="60"/>
+	<column name="instrument_id" not-null="true" sequence="public.instrument_instrument_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="type" not-null="true">
+		<type name="character varying" length="128"/>
+	</column>
+	<column name="brand" not-null="true">
+		<type name="character varying" length="128"/>
+	</column>
+	<column name="price" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="instrument_pk" type="pk-constr" table="public.instrument">
+		<columns names="instrument_id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="instrument_type" type="uq-constr" table="public.instrument">
+		<columns names="type" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="instructor_instructor_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="instructor" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2700" y="100"/>
+	<column name="instructor_id" not-null="true" sequence="public.instructor_instructor_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="personal_id_number" not-null="true">
+		<type name="character" length="12"/>
+	</column>
+	<column name="skill_level" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="instructor_pk" type="pk-constr" table="public.instructor">
+		<columns names="instructor_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="student_student_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="student" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="3020" y="680"/>
+	<column name="student_id" not-null="true" sequence="public.student_student_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="personal_id_number" not-null="true">
+		<type name="character" length="12"/>
+	</column>
+	<column name="contact_person">
+		<type name="character" length="12"/>
+	</column>
+	<constraint name="student_pk" type="pk-constr" table="public.student">
+		<columns names="student_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="lesson_lesson_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<sequence name="lesson_instructor_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="lesson" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="60" y="580"/>
+	<column name="lesson_id" not-null="true" sequence="public.lesson_lesson_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="instructor_id" not-null="true" sequence="public.lesson_instructor_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="time" not-null="true">
+		<type name="timestamp" length="0"/>
+	</column>
+	<column name="skill_level" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="lesson_pk" type="pk-constr" table="public.lesson">
+		<columns names="lesson_id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="lesson_uq" type="uq-constr" table="public.lesson">
+		<columns names="instructor_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="student_lesson_student_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<sequence name="student_lesson_lesson_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="student_lesson" layers="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1040" y="860"/>
+	<column name="student_id" not-null="true" sequence="public.student_lesson_student_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="lesson_id" not-null="true" sequence="public.student_lesson_lesson_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+</table>
+
+<sequence name="rental_rental_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<sequence name="rental_student_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<sequence name="rental_instrument_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="rental" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2460" y="1200"/>
+	<column name="rental_id" not-null="true" sequence="public.rental_rental_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="student_id" not-null="true" sequence="public.rental_student_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="instrument_id" not-null="true" sequence="public.rental_instrument_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="rental_start" not-null="true">
+		<type name="timestamp" length="0"/>
+	</column>
+	<column name="rental_end" not-null="true">
+		<type name="timestamp" length="0"/>
+	</column>
+	<constraint name="rental_pk" type="pk-constr" table="public.rental">
+		<columns names="rental_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="sibling_student_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="sibling" layers="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1660" y="980"/>
+	<column name="student_id" not-null="true" sequence="public.sibling_student_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="personal_id_number" not-null="true">
+		<type name="character" length="12"/>
+	</column>
+</table>
+
+<table name="ensemble" layers="0" collapse-mode="2" max-obj-count="9" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1580" y="1700"/>
+	<column name="price" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="schedule" not-null="true">
+		<type name="character varying" length="500"/>
+	</column>
+	<column name="available_spots" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="genre" not-null="true">
+		<type name="character varying" length="128"/>
+	</column>
+</table>
+
+<table name="group_lesson" layers="0" collapse-mode="2" max-obj-count="8" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="620" y="1340"/>
+	<column name="price" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="schedule" not-null="true">
+		<type name="character varying" length="500"/>
+	</column>
+	<column name="available_spots" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+</table>
+
+<table name="individual_lesson" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="220" y="1900"/>
+	<column name="price" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+</table>
+
+<relationship name="ensemble_inherits_lesson" type="relgen" layers="0"
+	 pk-pattern="{dt}_pk"
+	 custom-color="#ac3674"
+	 src-table="public.ensemble"
+	 dst-table="public.lesson"/>
+
+<relationship name="group_lesson_inherits_lesson" type="relgen" layers="0"
+	 pk-pattern="{dt}_pk"
+	 custom-color="#005040"
+	 src-table="public.group_lesson"
+	 dst-table="public.lesson"/>
+
+<relationship name="individual_lesson_inherits_lesson" type="relgen" layers="0"
+	 pk-pattern="{dt}_pk"
+	 custom-color="#39072c"
+	 src-table="public.individual_lesson"
+	 dst-table="public.lesson"/>
+
+<constraint name="address" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.address" table="public.person">
+	<columns names="address_id" ref-type="src-columns"/>
+	<columns names="address_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="personal_id_number" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.person" table="public.instructor">
+	<columns names="personal_id_number" ref-type="src-columns"/>
+	<columns names="personal_id_number" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="personal_id_number" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.person" table="public.student">
+	<columns names="personal_id_number" ref-type="src-columns"/>
+	<columns names="personal_id_number" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="instructor_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="public.instructor" table="public.lesson">
+	<columns names="instructor_id" ref-type="src-columns"/>
+	<columns names="instructor_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="student_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="public.student" table="public.student_lesson">
+	<columns names="student_id" ref-type="src-columns"/>
+	<columns names="student_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="lesson_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="public.lesson" table="public.student_lesson">
+	<columns names="lesson_id" ref-type="src-columns"/>
+	<columns names="lesson_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="student_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="public.student" table="public.rental">
+	<columns names="student_id" ref-type="src-columns"/>
+	<columns names="student_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="instrument_id" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.instrument" table="public.rental">
+	<columns names="instrument_id" ref-type="src-columns"/>
+	<columns names="instrument_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="student_sibling" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.student" table="public.sibling">
+	<columns names="student_id" ref-type="src-columns"/>
+	<columns names="student_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="person_sibling" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.person" table="public.sibling">
+	<columns names="personal_id_number" ref-type="src-columns"/>
+	<columns names="personal_id_number" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_person_address" type="relfk" layers="0"
+	 custom-color="#4282ed"
+	 src-table="public.person"
+	 dst-table="public.address" reference-fk="address"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_instructor_person" type="relfk" layers="0"
+	 custom-color="#d83b54"
+	 src-table="public.instructor"
+	 dst-table="public.person" reference-fk="personal_id_number"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_student_person" type="relfk" layers="0"
+	 custom-color="#a1f9fe"
+	 src-table="public.student"
+	 dst-table="public.person" reference-fk="personal_id_number"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_lesson_instructor" type="relfk" layers="0"
+	 custom-color="#7b1ead"
+	 src-table="public.lesson"
+	 dst-table="public.instructor" reference-fk="instructor_fk"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_student_lesson_student" type="relfk" layers="0"
+	 custom-color="#7187e0"
+	 src-table="public.student_lesson"
+	 dst-table="public.student" reference-fk="student_fk"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_student_lesson_lesson" type="relfk" layers="0"
+	 custom-color="#06989a"
+	 src-table="public.student_lesson"
+	 dst-table="public.lesson" reference-fk="lesson_fk"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_rental_student" type="relfk" layers="0"
+	 custom-color="#c43c64"
+	 src-table="public.rental"
+	 dst-table="public.student" reference-fk="student_fk"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_rental_instrument" type="relfk" layers="0"
+	 custom-color="#bce54a"
+	 src-table="public.rental"
+	 dst-table="public.instrument" reference-fk="instrument_id"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_sibling_student" type="relfk" layers="0"
+	 custom-color="#21dc62"
+	 src-table="public.sibling"
+	 dst-table="public.student" reference-fk="student_sibling"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_sibling_person" type="relfk" layers="0"
+	 custom-color="#eae81b"
+	 src-table="public.sibling"
+	 dst-table="public.person" reference-fk="person_sibling"
+	 src-required="false" dst-required="true"/>
+
+<permission>
+	<object name="public" type="schema"/>
+	<roles names="postgres"/>
+	<privileges create="true" usage="true"/>
+</permission>
+<permission>
+	<object name="public" type="schema"/>
+	<privileges create="true" usage="true"/>
+</permission>
+</dbmodel>
