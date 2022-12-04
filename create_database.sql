@@ -72,6 +72,9 @@ CREATE TABLE public.lesson (
 	instructor_id serial NOT NULL,
 	"time" timestamp NOT NULL,
 	skill_level smallint NOT NULL,
+	genre varchar(20),
+	available_spots smallint NOT NULL,
+	schedule varchar(300),
 	CONSTRAINT lesson_pk PRIMARY KEY (lesson_id)
 );
 -- ddl-end --
@@ -108,65 +111,6 @@ CREATE TABLE public.sibling (
 );
 -- ddl-end --
 ALTER TABLE public.sibling OWNER TO postgres;
--- ddl-end --
-
--- object: public.ensemble | type: TABLE --
-CREATE TABLE public.ensemble (
-	price integer NOT NULL,
-	schedule varchar(500) NOT NULL,
-	available_spots integer NOT NULL,
-	genre varchar(128) NOT NULL
--- 	lesson_id integer NOT NULL,
--- 	instructor_id integer NOT NULL,
--- 	"time" timestamp NOT NULL,
--- 	skill_level smallint NOT NULL,
--- 	lesson_type integer NOT NULL,
--- 	lesson_address integer NOT NULL,
--- 	classroom varchar(64) NOT NULL,
--- 	instructor_id_instructor integer NOT NULL,
-
-)
- INHERITS(public.lesson);
--- ddl-end --
-ALTER TABLE public.ensemble OWNER TO postgres;
--- ddl-end --
-
--- object: public.group_lesson | type: TABLE --
-CREATE TABLE public.group_lesson (
-	price integer NOT NULL,
-	schedule varchar(500) NOT NULL,
-	available_spots integer NOT NULL
--- 	lesson_id integer NOT NULL,
--- 	instructor_id integer NOT NULL,
--- 	"time" timestamp NOT NULL,
--- 	skill_level smallint NOT NULL,
--- 	lesson_type integer NOT NULL,
--- 	lesson_address integer NOT NULL,
--- 	classroom varchar(64) NOT NULL,
--- 	instructor_id_instructor integer NOT NULL,
-
-)
- INHERITS(public.lesson);
--- ddl-end --
-ALTER TABLE public.group_lesson OWNER TO postgres;
--- ddl-end --
-
--- object: public.individual_lesson | type: TABLE --
-CREATE TABLE public.individual_lesson (
-	price integer NOT NULL
--- 	lesson_id integer NOT NULL,
--- 	instructor_id integer NOT NULL,
--- 	"time" timestamp NOT NULL,
--- 	skill_level smallint NOT NULL,
--- 	lesson_type integer NOT NULL,
--- 	lesson_address integer NOT NULL,
--- 	classroom varchar(64) NOT NULL,
--- 	instructor_id_instructor integer NOT NULL,
-
-)
- INHERITS(public.lesson);
--- ddl-end --
-ALTER TABLE public.individual_lesson OWNER TO postgres;
 -- ddl-end --
 
 -- object: instructor_fk | type: CONSTRAINT --
