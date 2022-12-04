@@ -2,11 +2,13 @@ INSERT INTO public.address (address_id,city,street_name,zip_code,street_number)
 VALUES
 (6660, 'Nyköping', 'Hargsvägen', '61157', '2'),
 (6661, 'Malmköping', 'Hästvägen', '71158', '28'),
-(6662, 'Stockholm', 'Fiskgränd', '11123', '13');
+(6662, 'Stockholm', 'Fiskgränd', '11123', '13'),
+(6663, 'Stockholm', 'Smutsvägen', '12120', '32');
 
 INSERT INTO public.person (personal_id_number,email,first_name, surname,address_id,phone_number)
 VALUES
 (199609315155, 'ape@donkey.com', 'Halopie', 'Marström', 6660, '0730001112'),
+(200006115155, 'mamamia@weehoo.com', 'Mamoopa', 'Fluki', 6663, '0730001112'),
 (199902114139, 'saru@saru.com', 'Steepo', 'Apson', 6661, '0702201132'),
 (199104205553, 'cat@monka.com', 'Floski', 'Mamoobies', 6660, '0761003334'),
 (199205101250, 'here@monka.com', 'Artur', 'Milkies', 6662, '0721009334'),
@@ -30,7 +32,8 @@ INSERT INTO public.student (student_id,personal_id_number,contact_person)
 VALUES
 (5000, 199609315155, 196203021115),
 (5001, 199902114139, 196203021115),
-(5002, 199104205553, 196203021115);
+(5002, 199104205553, 196203021115),
+(5003, 199104205553, null);
 
 INSERT INTO public.lesson (lesson_id,instructor_id,time,skill_level)
 VALUES
@@ -62,6 +65,10 @@ INSERT INTO public.rental (rental_id,student_id,instrument_id,rental_start,renta
 VALUES
 (8000, 5000, 1102, TIMESTAMP'2017-01-29 13:30:00', TIMESTAMP'2017-03-29 13:30:00');
 
-INSERT INTO public.sibling (student_id,personal_id_number)
+INSERT INTO public.sibling (student_id,sibling_student_id)
 VALUES
-(5000, 199902114139);  
+(5000, 5001),  
+(5001, 5000),
+
+(5000, 5002),
+(5002, 5000);

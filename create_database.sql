@@ -104,7 +104,7 @@ ALTER TABLE public.rental OWNER TO postgres;
 -- object: public.sibling | type: TABLE --
 CREATE TABLE public.sibling (
 	student_id serial NOT NULL,
-	personal_id_number char(12) NOT NULL
+	sibling_student_id smallint NOT NULL
 );
 -- ddl-end --
 ALTER TABLE public.sibling OWNER TO postgres;
@@ -231,8 +231,8 @@ ON DELETE NO ACTION ON UPDATE NO ACTION;
 -- ddl-end --
 
 -- object: person_sibling | type: CONSTRAINT --
-ALTER TABLE public.sibling ADD CONSTRAINT person_sibling FOREIGN KEY (personal_id_number)
-REFERENCES public.person (personal_id_number) MATCH SIMPLE
+ALTER TABLE public.sibling ADD CONSTRAINT person_sibling FOREIGN KEY (sibling_student_id)
+REFERENCES public.student (student_id) MATCH SIMPLE
 ON DELETE NO ACTION ON UPDATE NO ACTION;
 -- ddl-end --
 
