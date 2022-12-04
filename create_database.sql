@@ -1,3 +1,4 @@
+CREATE DATABASE soundgoodschool;
 
 -- object: public.person | type: TABLE --
 CREATE TABLE public.person (
@@ -69,12 +70,13 @@ ALTER TABLE public.student OWNER TO postgres;
 -- object: public.lesson | type: TABLE --
 CREATE TABLE public.lesson (
 	lesson_id serial NOT NULL,
-	instructor_id serial NOT NULL,
+	instructor_id smallint NOT NULL,
 	"time" timestamp NOT NULL,
 	skill_level smallint NOT NULL,
 	genre varchar(20),
 	available_spots smallint NOT NULL,
 	schedule varchar(300),
+	price smallint NOT NULL,
 	CONSTRAINT lesson_pk PRIMARY KEY (lesson_id)
 );
 -- ddl-end --
@@ -117,10 +119,6 @@ ALTER TABLE public.sibling OWNER TO postgres;
 ALTER TABLE public.lesson ADD CONSTRAINT instructor_fk FOREIGN KEY (instructor_id)
 REFERENCES public.instructor (instructor_id) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
--- ddl-end --
-
--- object: lesson_uq | type: CONSTRAINT --
-ALTER TABLE public.lesson ADD CONSTRAINT lesson_uq UNIQUE (instructor_id);
 -- ddl-end --
 
 -- object: student_fk | type: CONSTRAINT --

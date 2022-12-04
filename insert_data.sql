@@ -36,7 +36,7 @@ INSERT INTO public.lesson (lesson_id,instructor_id,time,skill_level, genre, avai
 VALUES
 (9002, 2100, TIMESTAMP'2019-04-16 13:30:00', 0, null, 1, 300, null),
 (9001, 2101, TIMESTAMP'2017-01-30 13:30:00', 1, null, 10, 800, 'about 3 fiddy a clock'),
-(9000, 2100, TIMESTAMP'2017-01-29 13:30:00', 2, 'country & death-metal', 10, 600, 'we go when we want to');
+(9000, 2100, TIMESTAMP'2017-01-29 13:30:00', 2, 'country death-metal', 10, 600, 'we go when we want to');
 
 
 INSERT INTO public.student_lesson (student_id,lesson_id)
