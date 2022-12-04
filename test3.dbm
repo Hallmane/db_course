@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
  Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="1.0.0-alpha1" use-changelog="false" last-position="0,0" last-zoom="0.75" max-obj-count="15"
+<dbmodel pgmodeler-ver="1.0.0-alpha1" use-changelog="false" last-position="0,0" last-zoom="0.4" max-obj-count="15"
 	 default-schema="public" default-owner="postgres"
 	 layers="Default layer"
 	 active-layers="0"
@@ -33,7 +33,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="person" layers="0" collapse-mode="2" max-obj-count="7" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="60" y="60"/>
+	<position x="1440" y="120"/>
 	<column name="personal_id_number" not-null="true">
 		<type name="character" length="12"/>
 	</column>
@@ -68,7 +68,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="address" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="880" y="60"/>
+	<position x="2600" y="140"/>
 	<column name="address_id" not-null="true" sequence="public.address_address_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -97,7 +97,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="instrument" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1600" y="60"/>
+	<position x="2780" y="1140"/>
 	<column name="instrument_id" not-null="true" sequence="public.instrument_instrument_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -126,7 +126,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="instructor" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="2700" y="100"/>
+	<position x="320" y="200"/>
 	<column name="instructor_id" not-null="true" sequence="public.instructor_instructor_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -149,7 +149,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="student" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="3020" y="680"/>
+	<position x="1660" y="860"/>
 	<column name="student_id" not-null="true" sequence="public.student_student_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -177,7 +177,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="lesson" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="60" y="580"/>
+	<position x="140" y="900"/>
 	<column name="lesson_id" not-null="true" sequence="public.lesson_lesson_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -211,7 +211,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="student_lesson" layers="0" collapse-mode="2" max-obj-count="2" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1040" y="860"/>
+	<position x="860" y="660"/>
 	<column name="student_id" not-null="true" sequence="public.student_lesson_student_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -238,7 +238,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="rental" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="2460" y="1200"/>
+	<position x="2160" y="1560"/>
 	<column name="rental_id" not-null="true" sequence="public.rental_rental_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -267,7 +267,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="sibling" layers="0" collapse-mode="2" max-obj-count="2" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1660" y="980"/>
+	<position x="2700" y="700"/>
 	<column name="student_id" not-null="true" sequence="public.sibling_student_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -279,7 +279,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="ensemble" layers="0" collapse-mode="2" max-obj-count="9" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1580" y="1700"/>
+	<position x="860" y="1620"/>
 	<column name="price" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
@@ -297,7 +297,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="group_lesson" layers="0" collapse-mode="2" max-obj-count="8" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="620" y="1340"/>
+	<position x="1200" y="1180"/>
 	<column name="price" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
@@ -312,7 +312,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="individual_lesson" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="220" y="1900"/>
+	<position x="240" y="1680"/>
 	<column name="price" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
