@@ -1,4 +1,3 @@
--------------------------------------------TASK 1------------------------------------------------
 -- Create a view that shows the number of lessons and their types per month in the specified year
 CREATE VIEW lesson_type_count_per_month AS
 SELECT
@@ -15,15 +14,7 @@ WHERE EXTRACT(YEAR FROM l.time) = '2017'
 GROUP BY month
 ORDER BY month;
 
---CREATE VIEW ensembles_next_week AS
---SELECT 
---    EXTRACT(WEEK FROM l.time) AS week,
---
---
---GROUP BY genre,
---ORDER BY l;--?
 
--- Create a view that shows the number of lessons given per month in the specified year
 --CREATE VIEW lesson_count_per_month AS
 --SELECT
 --    EXTRACT(MONTH FROM time) AS month,
