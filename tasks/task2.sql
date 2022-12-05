@@ -21,6 +21,6 @@ HAVING COUNT(DISTINCT s2.sibling_student_id) = 2;
 
 --EXPLAIN ANALYZE
 
-EXPLAIN ANALYZE SELECT * FROM select_zero_siblings;
-EXPLAIN ANALYZE SELECT * FROM select_one_sibling;
-EXPLAIN ANALYZE SELECT * FROM select_two_siblings;
+--EXPLAIN ANALYZE SELECT * FROM select_zero_siblings;
+--EXPLAIN ANALYZE SELECT * FROM select_one_sibling;
+--EXPLAIN ANALYZE SELECT * FROM select_two_siblings;
