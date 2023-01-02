@@ -10,7 +10,7 @@ FROM lesson l
 LEFT JOIN individual_lesson i ON l.lesson_id = i.lesson_id
 LEFT JOIN group_lesson g ON l.lesson_id = g.lesson_id
 LEFT JOIN ensemble e ON l.lesson_id = e.lesson_id
-WHERE EXTRACT(YEAR FROM l.time) = '2017'
+--WHERE EXTRACT(YEAR FROM l.time) = '2017' -- Delete this line to fix item 1
 GROUP BY month
 ORDER BY month;
 

@@ -1,5 +1,6 @@
 -- task 1
-EXPLAIN ANALYZE SELECT * FROM lesson_type_count_per_month;
+--EXPLAIN ANALYZE SELECT * FROM lesson_type_count_per_month;
+EXPLAIN ANALYZE SELECT * FROM lesson_type_count_per_month WHERE EXTRACT(YEAR FROM l.time) = '2017';
 
 -- task 2
 EXPLAIN ANALYZE SELECT * FROM select_zero_sibling;

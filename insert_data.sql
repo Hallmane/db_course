@@ -51,7 +51,11 @@ VALUES
 
 INSERT INTO public.ensemble (lesson_id, instructor_id, time, skill_level, price,schedule,available_spots,genre)
 VALUES
-(9000, 2100, TIMESTAMP'2017-01-29 13:30:00', 2, 600, 'we go when we want to', 10, 'country & death-metal');
+(9000, 2100, TIMESTAMP'2022-11-30 13:30:00', 2, 600, 'we go when we want to', 10, 'grunge'),
+(9000, 2100, TIMESTAMP'2023-01-09 13:30:00', 2, 600, 'we go when we want to', 10, 'country & death-metal'),
+(9000, 2100, TIMESTAMP'2023-01-11 13:30:00', 2, 600, 'we go when we want to', 10, 'country & death-metal'),
+(9000, 2100, TIMESTAMP'2023-01-13 13:30:00', 2, 600, 'we go when we want to', 2, 'country & death-metal'),
+(9000, 2100, TIMESTAMP'2023-01-13 13:30:00', 2, 600, 'we go when we want to', 0, 'bebop');
 
 INSERT INTO public.group_lesson (lesson_id, instructor_id, time, skill_level, price,schedule,available_spots)
 VALUES
