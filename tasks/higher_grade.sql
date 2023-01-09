@@ -8,8 +8,8 @@ CREATE TABLE lessons (
 );
 
 INSERT INTO historical_db.lessons (lesson_id, instructor_id, time, skill_level, price, student_id)
-SELECT lesson_id, instructor_id, time, skill_level, price, student_id
-FROM seminar3.lesson;
+    SELECT lesson_id, instructor_id, time, skill_level, student_id
+        FROM seminar3.lesson;
 
 SELECT student_id, COUNT(*) as total_lessons
 FROM historical_db.lessons
